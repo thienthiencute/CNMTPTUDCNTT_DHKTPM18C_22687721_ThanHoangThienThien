@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý sản phẩm - ShopDB</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+
+            <!-- HEADER -->
+            <div class="page-header dashboard-header">
+                <div class="title-group">
+                    <h1>
+                        <i class="fa-solid fa-boxes-stacked"></i>
+                        Quản lý sản phẩm
+                    </h1>
+                    <span class="subtitle">ShopDB Admin Dashboard</span>
+                </div>
+
+                <div class="header-actions">
+                    <a href="/add" class="btn btn-success">
+                        <i class="fa-solid fa-plus"></i> Thêm sản phẩm
+                    </a>
+
+                    <div class="user-info">
+                        <div class="user-avatar">
+                            <%= user.charAt(0).toUpperCase() %>
+                        </div>
+                        <span><%= user %></span>
+                    </div>
+
+                    <a href="/logout" class="btn btn-secondary">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- CONTENT -->
+            <div class="table-container">
+
+                <!-- STATS -->
+                <div class="stats">
+                    <div class="stat-card">
+                        <i class="fa-solid fa-box"></i>
+                        <div>
+                            <h3><%= products.length %></h3>
+                            <p>Sản phẩm</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <i class="fa-solid fa-money-bill-wave"></i>
+                        <div>
+                            <h3>
+                                <%= products.reduce((s,p)=>s+p.price*p.quantity,0).toLocaleString('vi-VN') %>đ
+                            </h3>
+                            <p>Tổng giá trị</p>
+                        </div>
+                    </div>
+                </div>
+
+                <% if (products.length === 0) { %>
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📦</div>
+                        <h3>Chưa có sản phẩm nào</h3>
+                        <p>Thêm sản phẩm đầu tiên để bắt đầu</p>
+                        <a href="/add" class="btn btn-success">
+                            ➕ Thêm sản phẩm
+                        </a>
+                    </div>
+                <% } else { %>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tên</th>
+                            <th>Giá</th>
+                            <th>Số lượng</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% products.forEach(p => {
+                            let stockClass = 'stock-high';
+                            if (p.quantity < 5) stockClass = 'stock-low';
+                            else if (p.quantity < 15) stockClass = 'stock-medium';
+                        %>
+                        <tr>
+                            <td><strong>#<%= p.id %></strong></td>
+                            <td><%= p.name %></td>
+                            <td>
+                                <span class="price-badge">
+                                    <%= Number(p.price).toLocaleString('vi-VN') %>đ
+                                </span>
+                            </td>
+                            <td>
+                                <span class="stock-badge <%= stockClass %>">
+                                    <%= p.quantity %>
+                                </span>
+                            </td>
+                            <td>
+                                <div class="action-buttons">
+                                    <a href="/edit/<%= p.id %>" class="btn btn-warning">
+                                        <i class="fa-solid fa-pen"></i>
+                                    </a>
+                                    <a href="/delete/<%= p.id %>" class="btn btn-danger"
+                                        onclick="return confirm('Xóa sản phẩm <%= p.name %>?')">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+
+                <% } %>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
