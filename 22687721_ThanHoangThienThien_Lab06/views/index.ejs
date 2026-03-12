@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Product List</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/search.css">
+    <style>
+        
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Quản lý sản phẩm</h1>
+</header>
+
+<div class="container">
+    <div class="header">
+        <a href="/" class="back-icon" title="Quay lại danh sách sản phẩm">
+                ←
+        </a>
+        <h2>Danh sách sản phẩm</h2>
+    </div>
+    
+    <div class="search-box">
+        <form action="/search" method="GET">
+            <input type="text" name="keyword" placeholder="Nhập sản phẩm cần tìm...">
+            <button type="submit">Tìm kiếm</button>
+        </form>
+        
+    </div>
+    <div style="margin-top:20px;">
+        <a href="/add" class="add-btn">Thêm sản phẩm</a>
+    </div>
+    
+    <table class="product-table">
+        <thead>
+            <tr>
+                <th>Hình ảnh</th>
+                <th>Tên sản phẩm</th>
+                <th>Giá (VNĐ)</th>
+                <th>Số lượng</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% products.forEach(product => { %>
+            <tr>
+                <td><img src="<%= product.image %>" width="120"></td>
+                <td><%= product.name %></td>
+                <td><%= product.price.toLocaleString('vi-VN') %></td>
+                <td><%= product.quantity %></td>
+                <td>
+                    <a href="/edit/<%= product.ID %>" class="btn btn-edit">Sửa</a>
+                    <a href="/delete/<%= product.ID %>" onclick="return confirmDelete()" class="btn btn-delete">
+Xóa
+</a>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <% if(products.length === 0) {%>
+        <p>Không tìm thấy sản phẩm <%= keyword %></p>
+    <%  } %>
+        <div class="pagination">
+
+            <% for(let i = 1; i <= totalPages; i++) { %>
+
+                <a href="/?page=<%= i %>" 
+                class="<%= currentPage === i ? 'active' : '' %>">
+
+                <%= i %>
+                </a>
+             <% } %>
+
+        </div>
+
+    </div>
+    <footer class="footer">
+        <p>&copy; 22687721 - Thân Hoàng Thiên Thiên | Quản lý sản phẩm</p>
+    </footer>
+
+</div>
+<script>
+function confirmDelete() {
+    return confirm("Bạn có chắc muốn xóa sản phẩm này không?");
+}
+</script>
+</body>
+
+</html>

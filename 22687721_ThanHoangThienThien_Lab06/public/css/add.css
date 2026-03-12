@@ -1,0 +1,144 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: linear-gradient(135deg,#eef2ff,#f8f9ff);
+    margin: 0;
+    color: #333;
+}
+
+/* container */
+
+.container {
+    width: 90%;
+    max-width: 700px;
+    margin: 40px auto;
+}
+
+/* header */
+
+header {
+    background: linear-gradient(135deg,#667eea,#764ba2);
+    color: white;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 26px;
+    letter-spacing: 1px;
+}
+
+/* form */
+
+.form-container {
+    background: #ffffff;
+    padding: 35px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    transition: transform 0.2s;
+}
+
+.form-container:hover{
+    transform: translateY(-3px);
+}
+
+/* form group */
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #444;
+    font-size: 15px;
+}
+
+/* input */
+
+.form-group input[type="text"],
+.form-group input[type="number"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 15px;
+    transition: all 0.3s;
+}
+
+/* focus */
+
+.form-group input:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 10px rgba(102,126,234,0.25);
+    outline: none;
+}
+
+/* file upload */
+
+.form-group input[type="file"] {
+    width: 100%;
+    padding: 12px;
+    background: #f8f9ff;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.form-group input[type="file"]:hover {
+    border-color: #667eea;
+    background: #f3f5ff;
+}
+
+/* preview image */
+
+#preview {
+    margin-top: 15px;
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    display: none;
+    object-fit: cover;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+/* submit button */
+
+.btn-submit {
+    background: linear-gradient(135deg,#00c9ff,#92fe9d);
+    color: #333;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    width: 100%;
+    transition: 0.2s;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* back button */
+
+.btn-back {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #667eea;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.btn-back:hover{
+    text-decoration: underline;
+}

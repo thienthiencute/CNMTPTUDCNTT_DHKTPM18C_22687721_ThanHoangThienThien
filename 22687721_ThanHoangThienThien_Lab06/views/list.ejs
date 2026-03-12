@@ -1,0 +1,26 @@
+<h1>Danh sách sản phẩm</h1>
+
+<a href="/add">Thêm sản phẩm</a>
+
+<table border="1">
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Image</th>
+<th>Price</th>
+<th>Quantity</th>
+</tr>
+
+<% products.forEach(p => { %>
+
+<tr>
+<td><%= p.ID %></td>
+<td><%= p.name %></td>
+<td><img src="<%= p.image %>" width="100"></td>
+<td><%= p.price %></td>
+<td><%= p.quantity %></td>
+</tr>
+
+<% }) %>
+
+</table>
