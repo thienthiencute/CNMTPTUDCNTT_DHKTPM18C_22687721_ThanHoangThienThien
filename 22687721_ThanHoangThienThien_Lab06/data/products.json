@@ -1,0 +1,30 @@
+[
+  {
+    "id": "p001",
+    "name": "iPhone 17 Pro Max",
+    "price": 35000000,
+    "quantity": 5,
+    "image": "/uploads/iphone-17-pro-max-2tb-3.webp"
+  },
+  {
+    "id": "p002",
+    "name": "Xiaomi 15",
+    "price": 22000000,
+    "quantity": 8,
+    "image": "/uploads/xiaomi 15.png"
+  },
+  {
+    "id": "p003",
+    "name": "iPhone 16 Pro Max",
+    "price": 33000000,
+    "quantity": 4,
+    "image": "/uploads/iphone 16 promax.jpg"
+  },
+  {
+    "id": "p004",
+    "name": "Surface Laptop 7",
+    "price": 28000000,
+    "quantity": 3,
+    "image": "/uploads/Surface-Laptop-7-Black-13.8-inch.jpg"
+  }
+]
