@@ -1,0 +1,43 @@
+<h2>Quản lý vé sự kiện</h2>
+
+<form action="/" method="GET">
+    <input name="search" placeholder="Tìm tên...">
+    <select name="status">
+        <option value="">--Trạng thái--</option>
+        <option value="Upcoming">Upcoming</option>
+        <option value="Sold">Sold</option>
+        <option value="Cancelled">Cancelled</option>
+    </select>
+    <button type="submit">Tìm</button>
+    <a href="/add">Thêm vé mới</a>
+</form>
+
+<br>
+
+<table border="1" cellspacing="0" cellpadding="5">
+    <tr>
+        <th>Ảnh</th>
+        <th>Sự kiện</th>
+        <th>Người mua</th>
+        <th>Thành tiền</th>
+        <th>Thao tác</th>
+    </tr>
+    <% tickets.forEach(t => { %>
+    <tr>
+        <td><img src="<%= t.imageUrl %>" width="50"></td>
+        <td>
+            <b><%= t.eventName %></b> <br>
+            <small><%= t.category %> - <%= t.status %></small>
+        </td>
+        <td><%= t.holderName %></td>
+        <td>
+            <%= t.finalAmount.toLocaleString() %> VNĐ <br>
+            <small style="color: green;"><%= t.discountNote %></small>
+        </td>
+        <td>
+            <a href="/edit/<%= t.ticketId %>">Sửa</a> | 
+            <a href="/delete/<%= t.ticketId %>" onclick="return confirm('Xóa?')">Xóa</a>
+        </td>
+    </tr>
+    <% }) %>
+</table>

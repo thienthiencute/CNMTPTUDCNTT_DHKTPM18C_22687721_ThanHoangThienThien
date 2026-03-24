@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Thêm Vé</title>
+</head>
+<body>
+    <h2>Thêm Vé Mới</h2>
+    <form action="/save" method="POST" enctype="multipart/form-data">
+        <p>Sự kiện: <input type="text" name="eventName" required></p>
+        <p>Người mua: <input type="text" name="holderName" required></p>
+        
+        <p>Loại vé: 
+            <select name="category">
+                <option value="Standard">Standard</option>
+                <option value="VIP">VIP</option>
+                <option value="VVIP">VVIP</option>
+            </select>
+        </p>
+
+        <p>Số lượng: <input type="number" name="quantity" min="1" value="1" required></p>
+        <p>Giá: <input type="number" name="pricePerTicket" min="1" required></p>
+        <p>Ngày: <input type="date" name="eventDate" required></p>
+        
+        <p>Trạng thái: 
+            <select name="status">
+                <option value="Upcoming">Upcoming</option>
+                <option value="Sold">Sold</option>
+                <option value="Cancelled">Cancelled</option>
+            </select>
+        </p>
+
+        <p>Ảnh/QR: <input type="file" name="image" required></p>
+
+        <button type="submit">Lưu lên Cloud</button>
+        <a href="/">Hủy</a>
+    </form>
+</body>
+</html>
