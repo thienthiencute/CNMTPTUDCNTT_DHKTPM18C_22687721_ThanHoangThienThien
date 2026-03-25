@@ -1,40 +1,31 @@
-<h2>Quản lý vé sự kiện</h2>
+<link rel="stylesheet" href="/css/style.css">
+<h2>🎟️ Quản lý vé Sự kiện</h2>
 
-<form action="/" method="GET">
-    <input name="search" placeholder="Tìm tên...">
+<form action="/" method="GET" style="margin-bottom: 20px;">
+    <input name="search" placeholder="Tìm tên sự kiện/người mua...">
     <select name="status">
-        <option value="">--Trạng thái--</option>
+        <option value="">-- Trạng thái --</option>
         <option value="Upcoming">Upcoming</option>
         <option value="Sold">Sold</option>
-        <option value="Cancelled">Cancelled</option>
     </select>
-    <button type="submit">Tìm</button>
-    <a href="/add">Thêm vé mới</a>
+    <button type="submit">Tìm & Lọc</button>
+    <a href="/add" class="btn btn-add">Thêm mới</a>
 </form>
 
-<br>
-
-<table border="1" cellspacing="0" cellpadding="5">
+<table>
     <tr>
-        <th>Ảnh</th>
-        <th>Sự kiện</th>
-        <th>Người mua</th>
-        <th>Thành tiền</th>
-        <th>Thao tác</th>
+        <th>Ảnh</th><th>Sự kiện</th><th>Thành tiền</th><th>Thao tác</th>
     </tr>
     <% tickets.forEach(t => { %>
     <tr>
-        <td><img src="<%= t.imageUrl %>" width="50"></td>
-        <td>
-            <b><%= t.eventName %></b> <br>
-            <small><%= t.category %> - <%= t.status %></small>
-        </td>
-        <td><%= t.holderName %></td>
+        <td><img src="<%= t.imageUrl %>" width="60"></td>
+        <td><b><%= t.eventName %></b><br><small><%= t.holderName %></small></td>
         <td>
             <%= t.finalAmount.toLocaleString() %> VNĐ <br>
-            <small style="color: green;"><%= t.discountNote %></small>
+            <i style="color: green; font-size: 0.8em;"><%= t.discountNote %></i>
         </td>
         <td>
+            <a href="/detail/<%= t.ticketId %>">Xem</a> | 
             <a href="/edit/<%= t.ticketId %>">Sửa</a> | 
             <a href="/delete/<%= t.ticketId %>" onclick="return confirm('Xóa?')">Xóa</a>
         </td>

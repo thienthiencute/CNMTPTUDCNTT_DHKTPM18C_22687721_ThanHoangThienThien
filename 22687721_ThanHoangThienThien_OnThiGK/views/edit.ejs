@@ -1,30 +1,13 @@
-<h2>Sửa Vé</h2>
+<link rel="stylesheet" href="/css/style.css">
+<h2>Sửa thông tin vé</h2>
+
 <form action="/save" method="POST" enctype="multipart/form-data">
-    <input type="hidden" name="ticketId" value="<%= ticket.ticketId %>">
+    <input type="hidden" name="isEdit" value="true">
     <input type="hidden" name="oldImageUrl" value="<%= ticket.imageUrl %>">
 
-    Sự kiện: <input name="eventName" value="<%= ticket.eventName %>" required><br>
-    Người mua: <input name="holderName" value="<%= ticket.holderName %>" required><br>
+    Mã vé (Không sửa): <input name="ticketId" value="<%= ticket.ticketId %>" readonly><br><br>
+    Sự kiện: <input name="eventName" value="<%= ticket.eventName %>"><br><br>
     
-    Loại: <select name="category">
-        <option value="Standard" <%= ticket.category=='Standard'?'selected':'' %>>Standard</option>
-        <option value="VIP" <%= ticket.category=='VIP'?'selected':'' %>>VIP</option>
-        <option value="VVIP" <%= ticket.category=='VVIP'?'selected':'' %>>VVIP</option>
-    </select><br>
-
-    Số lượng: <input type="number" name="quantity" value="<%= ticket.quantity %>"><br>
-    Giá: <input type="number" name="pricePerTicket" value="<%= ticket.pricePerTicket %>"><br>
-    Ngày: <input type="date" name="eventDate" value="<%= ticket.eventDate %>"><br>
-    
-    Trạng thái: <select name="status">
-        <option value="Upcoming" <%= ticket.status=='Upcoming'?'selected':'' %>>Upcoming</option>
-        <option value="Sold" <%= ticket.status=='Sold'?'selected':'' %>>Sold</option>
-        <option value="Cancelled" <%= ticket.status=='Cancelled'?'selected':'' %>>Cancelled</option>
-    </select><br>
-
-    Ảnh cũ: <img src="<%= ticket.imageUrl %>" width="80"><br>
-    Đổi ảnh mới: <input type="file" name="image"><br><br>
-
-    <button type="submit">Cập nhật</button>
-    <a href="/">Quay lại</a>
+    <button type="submit" class="btn btn-add">Cập nhật</button>
+    <a href="/">Hủy</a>
 </form>

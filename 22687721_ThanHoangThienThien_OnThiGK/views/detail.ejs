@@ -1,0 +1,15 @@
+<link rel="stylesheet" href="/css/style.css">
+<h2>🔍 Chi tiết vé</h2>
+<div style="display: flex; gap: 20px;">
+    <img src="<%= ticket.imageUrl %>" width="250" style="border: 1px solid #ccc;">
+    <div>
+        <p><b>Mã vé:</b> <%= ticket.ticketId %></p>
+        <p><b>Sự kiện:</b> <%= ticket.eventName %></p>
+        <p><b>Người mua:</b> <%= ticket.holderName %></p>
+        <p><b>Loại:</b> <%= ticket.category %></p>
+        <p><b>Thành tiền:</b> <b style="color: blue;"><%= ticket.finalAmount.toLocaleString() %> VNĐ</b></p>
+        <p><b>Ghi chú:</b> <i><%= ticket.discountNote %></i></p>
+        <p><b>Ngày diễn ra:</b> <%= ticket.eventDate %></p>
+        <a href="/" class="btn">⬅️ Quay lại danh sách</a>
+    </div>
+</div>
